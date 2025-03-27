@@ -1,4 +1,4 @@
-# NCDClassifier
+# NCD-KNN-Classifier
 
 A kNN classifier based on the Normalized Compression Distance (NCD) for text classification.
 
@@ -7,7 +7,7 @@ A kNN classifier based on the Normalized Compression Distance (NCD) for text cla
 Install the package using pip:
 
 ```bash
-pip install NCD_KNN_Classifier
+pip install NCD-KNN-Classifier
 ```
 
 ## Usage
