@@ -15,7 +15,7 @@ pip install NCD_KNN_Classifier
 Here's a basic example of how to use the classifier:
 
 ```python
-from datasets import load_dataset
+from datasets import load_dataset for classification of two labels
 from NCD_KNN_Classifier import CompNCDClassifier
 
 # Example of imdb dataset
