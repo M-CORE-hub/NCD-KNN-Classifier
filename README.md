@@ -32,7 +32,7 @@ classifier = CompNCDClassifier(
 )
 classifier.save_to_pickle("train_footprint.pkl")
 
-# Prediction on the test set
+# Inference on the test set
 metrics = classifier.evaluate()
 print("Evaluation metrics:", metrics)
 ```
