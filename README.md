@@ -30,7 +30,7 @@ classifier = CompNCDClassifier(
     compressor="gzip",
     verbose=True
 )
-classifier.save_to_pickle("train_footprints.pkl")
+classifier.save_to_pickle("train_footprint.pkl")
 
 # Prediction on the test set
 metrics = classifier.evaluate()
