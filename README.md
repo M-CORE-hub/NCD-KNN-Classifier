@@ -7,7 +7,7 @@ A kNN classifier based on the Normalized Compression Distance (NCD) for text cla
 Install the package using pip:
 
 ```bash
-pip install NCDClassifier
+pip install NCD_KNN_Classifier
 ```
 
 ## Usage
@@ -15,7 +15,7 @@ pip install NCDClassifier
 Here's a basic example of how to use the classifier:
 
 ```python
-from NCDClassifier import CompNCDClassifier
+from NCD_KNN_Classifier import CompNCDClassifier
 
 # Assuming you have train and test datasets prepared
 classifier = CompNCDClassifier(
