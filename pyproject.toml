@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "NCDClassifier"
+version = "0.1.0"
+authors = [
+  { name="Javier Montaño", email="franjamonga@icloud.com" },
+]
+description = "A kNN classifier based on NCD distance metric for text compression"
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+dependencies = [
+  "numpy==2.2.4",
+  "scikit-learn==1.6.1",
+  "tqdm==4.67.1",
+  "datasets==3.4.1",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/tu_usuario/NCDClassifier"
+"Bug Tracker" = "https://github.com/tu_usuario/NCDClassifier/issues"
