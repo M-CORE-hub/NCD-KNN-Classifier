@@ -15,17 +15,22 @@ pip install NCD-KNN-Classifier
 Here's a basic example of how to use the classifier:
 
 ```python
+from datasets import load_dataset
 from NCD_KNN_Classifier import CompNCDClassifier
 
-# Assuming you have train and test datasets prepared
+# Example of imdb dataset
+dataset = load_dataset("imdb")
+test_samples = dataset["test"].shuffle(seed=42).select(range(200))
+# Compressing and Saving the Training Dataset Footprint
 classifier = CompNCDClassifier(
     train_dataset=dataset['train'],
-    test_dataset=dataset['test'],
+    test_dataset=test_samples,
     k=3,
     compressor="gzip",
     verbose=True
 )
 classifier.save_to_pickle("train_footprints.pkl")
+# Prediction on the test set
 metrics = classifier.evaluate()
 print("Evaluation metrics:", metrics)
 ```
