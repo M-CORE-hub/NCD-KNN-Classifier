@@ -4,8 +4,8 @@ import zlib
 import logging
 from tqdm import tqdm
 from collections import Counter
-from typing import List, Tuple, Dict, Union, Optional
 from multiprocessing import Pool, cpu_count
+from typing import List, Tuple, Dict, Union, Optional
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 
 
