@@ -2,7 +2,7 @@ import os
 import pickle
 import logging
 from tqdm import tqdm
-from collections import Counter
+from collections import defaultdict
 from multiprocessing import Pool, cpu_count
 from typing import List, Dict, Union, Optional
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support
@@ -108,7 +108,7 @@ class CompNCDClassifier:
             raise FileNotFoundError(f"File not found: {target_path}. Run save_to_pickle first.")
 
     def _predict_single(self, args: tuple[str, List[tuple]]) -> int:
-        """Predict label for a single text using NCD.
+        """Predict label for a single text using NCD with weighted voting.
 
         Args:
             args: Tuple of (text, training_data) where text is the input
@@ -125,8 +125,16 @@ class CompNCDClassifier:
         ]
         distances.sort(key=lambda x: x[1])
         k_nearest = distances[:self.k]
-        label_counts = Counter([neighbor[0] for neighbor in k_nearest])
-        return label_counts.most_common(1)[0][0]
+        weights = defaultdict(float)
+        for label, distance in k_nearest:
+            if distance > 0:
+                weights[label] += 1 / distance
+            else:
+                weights[label] += 1000
+        if weights:
+            return max(weights, key=weights.get)
+        else:
+            return training_data[0][0]
 
     def predict(self, texts: Union[str, List[str]]) -> Union[int, List[int]]:
         """Predict labels for one or multiple texts.
@@ -177,7 +185,6 @@ class CompNCDClassifier:
         
         if self.training_data_with_sizes is None:
             self.load_from_pickle()
-        
         self.logger.info("Evaluating on the dataset...")
         texts = [example[self.text_key] for example in eval_dataset]
         true_labels = [example[self.label_key] for example in eval_dataset]
