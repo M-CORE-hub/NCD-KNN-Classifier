@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "NCD_KNN_Classifier"
-version = "0.2.0"
+version = "0.2.1"
 authors = [
   { name="Javier Montaño", email="franjamonga@icloud.com" },
 ]
